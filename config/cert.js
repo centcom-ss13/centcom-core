@@ -1,7 +1,7 @@
 module.exports = {
   databaseUrl: 'localhost',
   databaseUsername: 'root',
-  databasePassword: undefined,
+  databasePassword: 'wowItsMeAPassword',
   apiHost: '134.209.42.179',
   apiPort: 3000,
   frontEndUrl: '134.209.42.179',
