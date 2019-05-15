@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {label 'centcom-docker'}
 
   environment {
       NODE_ENV = 'cert'
