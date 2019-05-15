@@ -23,6 +23,7 @@ services:
   api:
     build: './docker/api'
     restart: always
+    context: ./node_modules/@centcom/server
     depends_on:
       - db
     environment:
