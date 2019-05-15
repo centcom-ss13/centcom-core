@@ -32,5 +32,4 @@ Object.entries(environment).forEach(([key, value]) => {
   shell.env[key] = value;
 });
 
-shell.exec('dockerd');
-shell.exec('docker-compose up');
+shell.exec('sudo docker-compose up');
