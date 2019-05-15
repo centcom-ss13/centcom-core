@@ -4,14 +4,14 @@ ARG port=3000
 
 WORKDIR /usr/src/app
 
-COPY './package*.json' ./
+COPY "./package*.json" ./
 
 RUN npm install
 
 COPY . .
 
-CMD [ 'npm', 'build' ]
+CMD [ "npm", "build" ]
 
 EXPOSE $port
 
-CMD [ 'npm', 'start' ]
+CMD [ "npm", "start" ]
