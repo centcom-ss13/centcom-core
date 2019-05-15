@@ -63,7 +63,7 @@ services:
     volumes:
       - ui_assets:/var/www
     depends_on:
-      - buildUI
+      - build-ui
     environment:
       - CENTCOM_API_SSL
       - CENTCOM_API_PORT
