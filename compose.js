@@ -32,4 +32,7 @@ Object.entries(environment).forEach(([key, value]) => {
   shell.env[key] = value;
 });
 
+shell.exec('npm ci');
+shell.exec('cp ./node_modules/@centcom/ui/* ./docker/buildUI -Rf');
+shell.exec('cp ./node_modules/@centcom/server/* ./docker/api -Rf');
 shell.exec('sudo docker-compose up');
