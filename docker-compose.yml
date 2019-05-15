@@ -21,9 +21,10 @@ services:
     restart: always
 
   api:
-    build: './docker/api'
+    build:
+      context: './node_modules/@centcom/server'
+      dockerfile: './docker/api/Dockerfile'
     restart: always
-    context: ./node_modules/@centcom/server
     depends_on:
       - db
     environment:
