@@ -1,0 +1,78 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: wowItsMeAPassword
+      MYSQL_DATABASE: centcom
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  memcached:
+    image: memcached:1.5.14
+    restart: always
+
+  api:
+    build: './docker/api'
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - CENTCOM_API_SSL
+      - CENTCOM_API_PORT
+      - CENTCOM_API_HOST
+      - CENTCOM_DEBUG
+      - CENTCOM_DB_DATABASE
+      - CENTCOM_DB_HOST
+      - CENTCOM_DB_PASSWORD
+      - CENTCOM_DB_PORT
+      - CENTCOM_DB_USER
+      - CENTCOM_FRONT_END_PORT
+      - CENTCOM_FRONT_END_SSL
+      - CENTCOM_FRONT_END_URL
+      - CENTCOM_SSL_CERT_FILE
+      - CENTCOM_SSL_KEY_FILE
+      - CENTCOM_SSL_KEY_PASSPHRASE
+      - NODE_ENV
+
+  buildUI:
+    build: './docker/buildUI'
+    restart: always
+    volumes:
+      - ui_assets:/usr/src/app/dist
+    environment:
+      - CENTCOM_API_SSL
+      - CENTCOM_API_PORT
+      - CENTCOM_API_HOST
+      - CENTCOM_DEBUG
+      - CENTCOM_FRONT_END_PORT
+      - CENTCOM_FRONT_END_SSL
+      - CENTCOM_FRONT_END_URL
+
+  runUI:
+    build: './docker/runUI'
+    restart: always
+    volumes:
+      - ui_assets:/var/www
+    depends_on:
+      - buildUI
+    environment:
+      - CENTCOM_API_SSL
+      - CENTCOM_API_PORT
+      - CENTCOM_API_HOST
+      - CENTCOM_DEBUG
+      - CENTCOM_FRONT_END_PORT
+      - CENTCOM_FRONT_END_SSL
+      - CENTCOM_FRONT_END_URL
+
+volumes:
+  db_data:
+  ui_assets:
