@@ -5,9 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npx mocha --recursive",
-    "start": "node ./compose",
+    "deploy": "node ./compose",
     "build": "webpack --config ./webpack.prod.js",
-    "deploy": "node scripts/deploy",
     "db": "run-s db:up",
     "db:up": "npx db-migrate up",
     "db:down": "npx db-migrate down",

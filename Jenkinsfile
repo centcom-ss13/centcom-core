@@ -16,7 +16,7 @@ pipeline {
     stage('Deploy Containers') {
       steps {
         nodejs('main') {
-          sh 'docker-compose up'
+          sh 'npm run deploy'
         }
       }
     }
