@@ -4,10 +4,10 @@ ARG port=80
 
 WORKDIR /usr/src/app
 
-COPY '../../node_modules/@centcom/ui/package*.json' ./
+COPY './node_modules/@centcom/ui/package*.json' ./
 
 RUN npm install
 
-COPY '../../node_modules/@centcom/ui/' .
+COPY './node_modules/@centcom/ui/' .
 
 CMD [ 'npm', 'build' ]
