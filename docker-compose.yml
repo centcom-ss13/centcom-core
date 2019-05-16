@@ -48,6 +48,8 @@ services:
       - NODE_ENV
     ports:
       - 3000:3000
+    links:
+        - "db:mysql"
 
   build-ui:
     build: './docker/buildUI'
