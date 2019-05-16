@@ -104,8 +104,10 @@ volumes:
 
 networks:
   hostExternal:
-    external: eth0
+    external: true
+    name: eth0
   hostInternal:
-    external: eth1
+    external: true
+    name: eth1
   dockerInternal:
     driver: bridge
