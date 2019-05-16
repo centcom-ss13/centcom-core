@@ -20,5 +20,12 @@ pipeline {
         }
       }
     }
+    stage('Prep Database') {
+      steps {
+        nodejs('main') {
+          sh 'npm run db:up'
+        }
+      }
+    }
   }
 }
