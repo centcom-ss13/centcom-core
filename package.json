@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/runtime": "^7.4.4",
     "@centcom/server": "^0.0.1",
-    "@centcom/ui": "^0.0.2",
+    "@centcom/ui": "^0.0.3",
     "config": "^3.1.0",
     "shelljs": "^0.8.3"
   },
