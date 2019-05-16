@@ -9,6 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: wowItsMeAPassword
       MYSQL_DATABASE: centcom
+    ports:
+      - 3306:3306
 
   adminer:
     image: adminer
@@ -19,6 +21,8 @@ services:
   memcached:
     image: memcached:1.5.14
     restart: always
+    ports:
+      - 11211:11211
 
   api:
     build: './docker/api'
@@ -42,6 +46,8 @@ services:
       - CENTCOM_SSL_KEY_FILE
       - CENTCOM_SSL_KEY_PASSPHRASE
       - NODE_ENV
+    ports:
+      - 3000:3000
 
   build-ui:
     build: './docker/buildUI'
@@ -72,6 +78,8 @@ services:
       - CENTCOM_FRONT_END_PORT
       - CENTCOM_FRONT_END_SSL
       - CENTCOM_FRONT_END_URL
+    ports:
+      - 80:80
 
 volumes:
   db_data:
