@@ -1,7 +1,5 @@
 FROM node:12
 
-ARG port=3000
-
 WORKDIR /usr/src/app
 
 COPY "./package*.json" ./
@@ -12,6 +10,6 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE $port
+EXPOSE 3000
 
 CMD [ "npm", "start" ]
