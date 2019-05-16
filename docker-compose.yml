@@ -11,18 +11,26 @@ services:
       MYSQL_DATABASE: centcom
     ports:
       - 3306:3306
+    network:
+      - hostInternal
+      - dockerInternal
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    network:
+      - hostExternal
+      - dockerInternal
 
   memcached:
     image: memcached:1.5.14
     restart: always
     ports:
       - 11211:11211
+    network:
+      - dockerInternal
 
   api:
     build: './docker/api'
@@ -48,6 +56,9 @@ services:
       - NODE_ENV
     ports:
       - 3000:3000
+    network:
+      - hostExternal
+      - dockerInternal
 
   build-ui:
     build: './docker/buildUI'
@@ -62,6 +73,10 @@ services:
       - CENTCOM_FRONT_END_PORT
       - CENTCOM_FRONT_END_SSL
       - CENTCOM_FRONT_END_URL
+    network:
+      - hostExternal
+      - dockerInternal
+
 
   run-ui:
     build: './docker/runUI'
@@ -80,7 +95,17 @@ services:
       - CENTCOM_FRONT_END_URL
     ports:
       - 80:80
+    network:
+      - hostExternal
 
 volumes:
   db_data:
   ui_assets:
+
+network:
+  hostExternal:
+    external: eth0
+  hostInternal:
+    external: eth1
+  dockerInternal:
+    driver: bridge

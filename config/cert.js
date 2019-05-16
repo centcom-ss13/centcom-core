@@ -1,5 +1,5 @@
 module.exports = {
-  databaseUrl: 'localhost',
+  databaseUrl: 'mysql',
   databaseUsername: 'root',
   databasePassword: 'wowItsMeAPassword',
   apiHost: '134.209.42.179',
