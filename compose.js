@@ -35,5 +35,8 @@ Object.entries(environment).forEach(([key, value]) => {
 shell.exec('cp ./node_modules/@centcom/ui/* ./docker/buildUI -Rf');
 shell.exec('cp ./node_modules/@centcom/server/* ./docker/api -Rf');
 shell.exec('cp ./config ./docker/api -Rf');
-shell.exec('sudo docker-compose down');
-shell.exec('sudo docker-compose up --build -d --remove-orphans');
+
+shell.exec('sudo docker-compose rm --all');
+shell.exec('sudo docker-compose pull');
+shell.exec('sudo docker-compose build --no-cache');
+shell.exec('sudo docker-compose up -d --force-recreate');
